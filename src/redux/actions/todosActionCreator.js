@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../types/todoTypes'
+import { ADD_TODO, SET_TODOS } from '../types/todoTypes'
 import { DELETE_TODO } from '../types/todoTypes'
 import { UPDATE_TODO } from '../types/todoTypes'
 import { TOGGLE_TODO} from '../types/todoTypes'
@@ -27,5 +27,11 @@ export const toggleTodo = (id) => {
     return {
         type: TOGGLE_TODO,
         payload: id
+    }
+}
+export const setTodos = (todos) => {
+    return {
+        type: SET_TODOS,
+        payload: todos
     }
 }
