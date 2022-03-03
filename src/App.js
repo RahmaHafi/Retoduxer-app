@@ -8,20 +8,24 @@ import TodoDetails from './pages/TodoDetails';
 import Collaborators from './pages/Collaborators';
 import NewCollaborator from './pages/NewCollaborator';
 import UpdateTodo from './pages/UpdateTodo';
+import GlobalLoadingOverlay from './components/GlobalLoadingOverlay';
 
 function App() {
   return (
-    <Router>
-      <NavbarTodo />
-      <Switch>
-        <Route exact path="/" component={Todos} />
-        <Route path="/colloaborators" component={Collaborators}/>
-        <Route path="/new-collaborator" component={NewCollaborator} />
-        <Route path="/new-todo" component={Todo} />
-        <Route path="/todos/:id" component={TodoDetails} />
-        <Route path="/update-todo/:id" component={UpdateTodo} />
-      </Switch>
-    </Router>
+    <>
+      <GlobalLoadingOverlay />
+      <Router>
+        <NavbarTodo />
+        <Switch>
+          <Route exact path="/" component={Todos} />
+          <Route path="/colloaborators" component={Collaborators} />
+          <Route path="/new-collaborator" component={NewCollaborator} />
+          <Route path="/new-todo" component={Todo} />
+          <Route path="/todos/:id" component={TodoDetails} />
+          <Route path="/update-todo/:id" component={UpdateTodo} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
