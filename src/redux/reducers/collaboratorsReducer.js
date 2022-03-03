@@ -1,21 +1,6 @@
-import {ADD_COLLABORATOR} from '../types/collaboratorTypes';
+import {ADD_COLLABORATOR, SET_COLLABORATORS} from '../types/collaboratorTypes';
 
-const initialState = [
-  {
-    id: "1",
-    name: "Leanne Graham",
-    username: "graham",
-    email: "leanne@gmail.com",
-    phone: "1-770-736-8031"
-  },
-  {
-    id: "2",
-    name: "Ervin Howell",
-    username: "ervinh",
-    email: "ervin@outlook.com",
-    phone: "010-692-6593"
-  },
-];
+const initialState = [];
 const collaboratorsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COLLABORATOR:
@@ -24,6 +9,17 @@ const collaboratorsReducer = (state = initialState, action) => {
        id :Math.floor(Math.random()*10000).toString()
      } 
      return [...state,newCollabToAdd]
+     case SET_COLLABORATORS: {
+      return action.payload.map(user => {
+        delete user.address;
+        delete user.company;
+        delete user.website;
+        return {
+          ...user,
+          id: user.id ? user.id.toString() : ""
+        }
+      });
+    }
     default:
     return state;
   }

@@ -9,8 +9,19 @@ import Collaborators from './pages/Collaborators';
 import NewCollaborator from './pages/NewCollaborator';
 import UpdateTodo from './pages/UpdateTodo';
 import GlobalLoadingOverlay from './components/GlobalLoadingOverlay';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchTodos } from './redux/actions/todosActionCreator';
+import { fetchCollaborators } from './redux/actions/collaboratorsActionCreator';
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchTodos())
+    dispatch(fetchCollaborators())
+  }, [])
+
+
   return (
     <>
       <GlobalLoadingOverlay />
